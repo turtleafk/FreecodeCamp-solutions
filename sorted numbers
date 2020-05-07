@@ -1,0 +1,25 @@
+//sort the array
+//then return the index where you insert num
+function getIndexToIns(arr, num) {
+  let ans = []; //array once everything is sorted
+  let index;
+  let newArr = [num, ...arr]; //putting num and arr together
+  for(let i = 0; i < 100; i++) { // 100 as the ceiling 
+    for(let j = 0; j < newArr.length; j++) {
+      if(i == newArr[j]) { //getting sorted as i  goes to 100
+        ans.push(newArr[j]);
+      }
+      //in case there is another number equal to num,
+      //it gets the first one always
+      if(ans[j] == num && ans[j - 1] == num) {
+        index = j - 1;
+      } else if(ans[j] == num && ans[j + 1] == num || ans[j] == num) {
+        index = j;
+      }
+    }
+  }
+  console.log(index, ans);
+  return index;
+}
+
+getIndexToIns([3, 10, 5], 3);
