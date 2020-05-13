@@ -1,0 +1,16 @@
+function fearNotLetter(str) {
+  let abc = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+  let firstLetter = str[0];               //storing the first letter of the string
+  let lastLetter = str[str.length - 1];    //and the last letter  
+  let indexLast = abc.indexOf(lastLetter);  //storing the index of the both of these letters in the abc array
+  let indexFirst = abc.indexOf(firstLetter);
+ 
+  for(let i = indexFirst; i < indexLast; i++) {   ///move through the abc array starting at the first letter of the string
+    if(!str.includes(abc[i])) {                   //to the last letter
+      return abc[i];                              //if the letters the loop went through is not included in the string,
+    }                                             //then return that letter
+  }
+  return undefined;
+}
+
+fearNotLetter("stvwx");
