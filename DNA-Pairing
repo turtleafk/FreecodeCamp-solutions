@@ -1,0 +1,25 @@
+function pairElement(str) {
+  let ans = [];
+  let pair1 = ['G', 'C'];
+  let pair2 = ['A', 'T'];
+
+  for(let i = 0; i < str.length; i++) {
+    if(pair1.includes(str[i])) {            //checks if the current letter in the string argument is in pair 1
+      if(pair1[0] != str[i]) {           //checks if the first letter in the pair is not equal to the current letter
+        ans.push([str[i], pair1[0]]);    //pushes that letter into an array along with the other letter in the pair
+      } else if(pair1[1] != str[i]) {
+        ans.push([str[i], pair1[1]]);
+      }
+
+    } else if(pair2.includes(str[i])) {     ////checks if the current letter in the string argument is in pair 2...
+      if(pair2[0] != str[i]) {
+        ans.push([str[i], pair2[0]]);
+      } else if(pair2[1] != str[i]) {
+        ans.push([str[i], pair2[1]]);
+      }
+    }
+  } 
+  return ans;
+}
+
+pairElement("ATCGA");
