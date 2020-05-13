@@ -1,0 +1,32 @@
+function convertHTML(str) {
+  let regex = /[^\w^\s]/;         //gets the HTML entities
+  let match = str.match(regex);
+  
+  if(!match) {                   //if there is none, than it return the string
+    return str;
+  } else if(match) {           
+      if(match == '&') {
+          str = str.replace(match, '&amp;');
+      } 
+      if(match == '<' || match == '>') {
+          str = str.replace('<', '&lt;');
+          if(match) {
+            str = str.replace('<', '&lt;');
+            str = str.replace('>', '&gt;');
+          }
+      } 
+      if(match == '"') {
+          str = str.replace('"', '&quot;');
+          if(match) {
+            str = str.replace('"', '&quot;');
+          }
+      }
+      if(match == '\'') {
+        str = str.replace('\'', '&apos;');
+      }
+  }
+  
+  return str;
+}
+
+convertHTML('Schindler\'s List');            //this will return ------> "Schindler&apos;s List"
