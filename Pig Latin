@@ -1,0 +1,34 @@
+function translatePigLatin(str) {
+  let ans;
+  let hold;
+  let vowelStart = /^[aeiou]/;          //checks if it starts with a vowel
+  let vowel = /[aeiou]/;                //checks if it has a vowel
+  let consStart = /^[^aeiou]/;          //checks if it starts with a consonant
+  
+  let match = str.match(vowel);         //matches and gets the letter from vowel
+  let matchStart = str.match(vowelStart); //matches and gets the letter from vowel start
+  let beginCons = str.match(consStart); //matches and gets the letter from cons start
+
+  if(!str.includes(match)) {            //if the string does not include a vowel
+    ans = str + 'ay';
+
+  } else if(str[Math.ceil((str.length / 2) - 1)] == match[0]          //if the vowel is in the middle of the string
+    || str[(str.length / 2) + 1] == match[0]
+    || str[str.length / 2] == match[0]) {
+    hold = str.slice(0, str.indexOf(match[0]));
+    ans = str.slice(str.indexOf(match[0]));
+    ans = ans + hold + 'ay';
+   
+  } else if(matchStart) {             //if the start of the string is a vowel
+    ans = str + 'way';
+    
+  } else if(beginCons) {              //if the string begins with a consonant
+    hold = str.slice(0, 1);
+    ans = str.slice(1);
+    ans = ans + hold + 'ay';
+    
+  }
+  return ans;
+}
+
+translatePigLatin("california");
